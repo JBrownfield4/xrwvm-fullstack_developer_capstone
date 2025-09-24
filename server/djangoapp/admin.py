@@ -2,15 +2,15 @@ from django.contrib import admin
 from .models import CarMake, CarModel
 
 # Inline class for CarModel to be displayed within CarMake admin
-class CarModelInline(admin.TabularInline):
+class CarModelInline(admin.StackedInline):
     model = CarModel
-    extra = 1
+    extra = 2
 
 # Admin class for CarMake with CarModelInline
 class CarMakeAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description']
+    search_fields = ['name']
     inlines = [CarModelInline]
-    list_display = ('name', 'country', 'founded_year')
-    search_fields = ['name', 'country']
 
 # Admin class for CarModel
 class CarModelAdmin(admin.ModelAdmin):
