@@ -15,11 +15,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class CarMake(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    country = models.CharField(max_length=50, blank=True, null=True)
-    founded_year = models.PositiveIntegerField(blank=True, null=True)
-
     def __str__(self):
-        return f"{self.name} ({self.country})" if self.country else self.name
+        return self.name  # Return the name as the string representation
 
 
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
@@ -50,7 +47,6 @@ class CarModel(models.Model):
             MinValueValidator(2015)
         ]
     )
-    color = models.CharField(max_length=30, blank=True, null=True)  # Optional extra field
 
     def __str__(self):
         return f"{self.car_make.name} {self.name} ({self.year})" 
