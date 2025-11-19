@@ -33,7 +33,7 @@ class CarMake(models.Model):
 class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake,
                                  on_delete=models.CASCADE,
-                                 related_name='models')  
+                                 related_name='models')
     # Many-to-One relationship
     dealer_id = models.IntegerField()  # Refers to dealer in Cloudant DB
     name = models.CharField(max_length=100)
