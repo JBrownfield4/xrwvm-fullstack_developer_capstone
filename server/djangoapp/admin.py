@@ -1,10 +1,12 @@
 from django.contrib import admin
 from .models import CarMake, CarModel
 
+
 # Inline class for CarModel to be displayed within CarMake admin
 class CarModelInline(admin.StackedInline):
     model = CarModel
     extra = 2
+
 
 # Admin class for CarMake with CarModelInline
 class CarMakeAdmin(admin.ModelAdmin):
@@ -12,11 +14,13 @@ class CarMakeAdmin(admin.ModelAdmin):
     search_fields = ['name']
     inlines = [CarModelInline]
 
+
 # Admin class for CarModel
 class CarModelAdmin(admin.ModelAdmin):
     list_display = ('name', 'car_make', 'type', 'year', 'dealer_id')
     list_filter = ('car_make', 'type', 'year')
     search_fields = ['name', 'car_make__name']
+
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
