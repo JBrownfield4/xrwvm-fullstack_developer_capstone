@@ -99,6 +99,7 @@ DATABASES = {
     }
 }
 
+# pylint: disable=line-too-long
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
@@ -117,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# pylint: enable=line-too-long
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
